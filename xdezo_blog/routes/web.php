@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',function(){
+    return view('home.homepage');
+})->name('homepage');
 
 Route::middleware([
     'auth:sanctum',
@@ -15,3 +16,6 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('/home',[AdminController::class,'index'])->name('home');
+
